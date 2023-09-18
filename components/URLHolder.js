@@ -34,6 +34,13 @@ const URLHolder = () => {
     }
   };
 
+  const handleEnterKeyPress = (e) => {
+    if (e.key === "Enter") {
+      fetchMetadata();
+      setLoading(true);
+    }
+  };
+
   return (
     <section className="flex flex-col gap-y-4">
       <input
@@ -47,12 +54,7 @@ const URLHolder = () => {
           setUrl(e.target.value);
           setMetadata({});
         }}
-        onKeyUp={(e) => {
-          if (e.key === "Enter") {
-            fetchMetadata();
-            setLoading(true);
-          }
-        }}
+        onKeyUp={handleEnterKeyPress}
         className="border border-black focus:border-black/50 w-full px-2.5 py-2 rounded-3xl text-center outline-none"
         required
       />
