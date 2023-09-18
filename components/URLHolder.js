@@ -17,11 +17,15 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
 import FetchURLSkeletonLoader from "./FetchURLSkeletonLoader";
+import ClipBoardIcon from "./ClipBoardIcon";
+import { randomBytes } from "crypto";
+import ReloadIcon from "./ReloadIcon";
 
 const URLHolder = () => {
   const [url, setUrl] = useState("");
   const [metadata, setMetadata] = useState({});
   const [loading, setLoading] = useState(false);
+  const [copy, setCopy] = useState(true);
 
   const fetchMetadata = async () => {
     url.length > 0 && setLoading(true);
@@ -40,6 +44,32 @@ const URLHolder = () => {
       setLoading(true);
     }
   };
+
+  function handleShortUrl() {
+    setCopy(false);
+
+    const urlInfo = {
+      metaThumbnail: metadata.imageUrl,
+      metaTitle: metadata.title,
+      metaDescription: metadata.description,
+      metaUrl: url,
+      metaSlug: randomBytes(3).toString("hex"),
+    };
+
+    fetch("/api/insertData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(urlInfo),
+    })
+      .then((request) => request.json())
+      .then((response) => {
+        console.log(response);
+        setCopy(true);
+      })
+      .catch((error) => console.error(error.message));
+  }
 
   return (
     <section className="flex flex-col gap-y-4">
@@ -60,7 +90,7 @@ const URLHolder = () => {
       />
 
       {url.length > 0 && Object?.keys(metadata)?.length > 0 ? (
-        <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2">
+        <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2 relative">
           <Image
             height={52.5}
             width={100}
@@ -77,6 +107,14 @@ const URLHolder = () => {
               {metadata.description}
             </p>
           </article>
+
+          <button
+            onClick={handleShortUrl}
+            className="absolute top-2 right-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1.5 px-1.5 rounded-full shadow disabled:bg-gray-300"
+            disabled={!copy && loading}
+          >
+            {copy ? <ClipBoardIcon /> : <ReloadIcon />}
+          </button>
         </div>
       ) : !loading ? (
         <p className="text-center text-sm text-yellow-700">
