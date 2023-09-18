@@ -21,16 +21,22 @@ const options = {
   useUnifiedTopology: true,
 };
 
-const client = new MongoClient(uri, options);
+if (!process.env.DB_URI) {
+  throw new Error("Please add your Mongo URI to .env.local");
+}
+
+let client;
 
 export async function connectToDatabase() {
-  if (!client.isConnected()) {
-    try {
+  try {
+    if (!client || !client.isConnected()) {
+      client = new MongoClient(uri, options);
       await client.connect();
       console.log("Connected to the database");
-    } catch (error) {
-      console.error("Error connecting to the database:", error);
     }
+    return client.db();
+  } catch (error) {
+    console.error("Error connecting to the database:", error.message);
+    throw error;
   }
-  return client.db();
 }
