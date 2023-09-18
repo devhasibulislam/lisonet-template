@@ -1,5 +1,5 @@
 /**
- * Title: Write a program using JavaScript on SkeletonLoader
+ * Title: Write a program using JavaScript on Fetch URL Skeleton Loader
  * Author: Hasibul Islam
  * Portfolio: https://devhasibulislam.vercel.app
  * Linkedin: https://linkedin.com/in/devhasibulislam
@@ -15,7 +15,7 @@
 
 import React from "react";
 
-const SkeletonLoader = () => {
+const FetchURLSkeletonLoader = () => {
   return (
     <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2">
       <div className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] h-[171.06px] w-full max-w-full border border-transparent bg-gray-300 animate-pulse" />
@@ -29,4 +29,4 @@ const SkeletonLoader = () => {
   );
 };
 
-export default SkeletonLoader;
+export default FetchURLSkeletonLoader;

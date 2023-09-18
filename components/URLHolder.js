@@ -16,7 +16,7 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
-import SkeletonLoader from "./SkeletonLoader";
+import FetchURLSkeletonLoader from "./FetchURLSkeletonLoader";
 
 const URLHolder = () => {
   const [url, setUrl] = useState("");
@@ -81,7 +81,7 @@ const URLHolder = () => {
       ) : !loading ? (
         <p className="text-center">⚠️ No URL Inserted!</p>
       ) : (
-        <SkeletonLoader />
+        <FetchURLSkeletonLoader />
       )}
     </section>
   );
