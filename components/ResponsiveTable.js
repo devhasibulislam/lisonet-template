@@ -25,10 +25,16 @@ const ResponsiveTable = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      setTableData(data);
-      setIsLoading(false);
-    }, 5000);
+
+    fetch("/api/getAllData")
+      .then((request) => request.json())
+      .then((data) => {
+        setTableData(data?.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
