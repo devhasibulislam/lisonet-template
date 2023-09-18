@@ -16,7 +16,6 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
-import ReloadIcon from "./ReloadIcon";
 import SkeletonLoader from "./SkeletonLoader";
 
 const URLHolder = () => {
