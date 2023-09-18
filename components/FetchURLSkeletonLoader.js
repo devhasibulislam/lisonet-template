@@ -20,10 +20,10 @@ const FetchURLSkeletonLoader = () => {
     <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2">
       <div className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] h-[171.06px] w-full max-w-full border border-transparent bg-gray-300 animate-pulse" />
       <article className="flex flex-col gap-y-1.5 w-full">
-        <div className="h-[24px] bg-gray-300 animate-pulse w-full rounded-lg"></div>
+        <div className="h-[24px] bg-gray-300 animate-pulse w-full rounded-lg" />
         <hr className="border-gray-300 border-dashed my-2" />
-        <div className="h-[20px] bg-gray-300 animate-pulse w-full rounded-lg"></div>
-        <div className="h-[20px] bg-gray-300 animate-pulse md:w-2/3 w-full rounded-lg"></div>
+        <div className="h-[20px] bg-gray-300 animate-pulse w-full rounded-lg" />
+        <div className="h-[20px] bg-gray-300 animate-pulse md:w-2/3 w-full rounded-lg" />
       </article>
     </div>
   );
