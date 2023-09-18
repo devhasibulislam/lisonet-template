@@ -16,7 +16,7 @@ export default function Home() {
           content="Checkout our free tool that short your url with encryption"
           key="desc"
         />
-        <meta property="og:url" content="http://localhost:3000/" />
+        <meta property="og:url" content="https://lisonet-template.vercel.app/" />
         <meta property="og:title" content="Try URL Shortener for Free" />
         <meta
           property="og:description"
