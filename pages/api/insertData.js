@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
       res
         .status(201)
-        .json({ message: "Data inserted successfully", data: result.ops[0] });
+        .json({ message: "Data inserted successfully", data: result });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Error inserting data" });
