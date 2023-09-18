@@ -28,9 +28,9 @@ export default async function handler(req, res) {
       const $ = load(html);
 
       // Extract the metadata you need
-      const title = $("title").text() || "N/A";
+      const title = $("title").text() || "No title found!";
       const description =
-        $('meta[name="description"]').attr("content") || "N/A";
+        $('meta[name="description"]').attr("content") || "No description found!";
       const imageUrl =
         $('meta[property="og:image"]').attr("content") ||
         "/image-not-available.png";
