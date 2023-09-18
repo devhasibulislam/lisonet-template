@@ -24,6 +24,13 @@ const options = {
 const client = new MongoClient(uri, options);
 
 export async function connectToDatabase() {
-  if (!client.isConnected()) await client.connect();
+  if (!client.isConnected()) {
+    try {
+      await client.connect();
+      console.log("Connected to the database");
+    } catch (error) {
+      console.error("Error connecting to the database:", error);
+    }
+  }
   return client.db();
 }
