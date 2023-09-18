@@ -23,19 +23,19 @@ const DisplayTableSkeletonLoader = () => {
           <div className="bg-gray-200 h-[45px] w-[85.71px] rounded-lg"></div>
         </td>
         <td className="px-6 py-4 whitespace-no-wrap">
-          <div className="bg-gray-200 h-4 w-full mb-2"></div>
-          <div className="bg-gray-200 h-4 w-1/2"></div>
+          <div className="bg-gray-200 h-4 w-full rounded-lg mb-2"></div>
+          <div className="bg-gray-200 h-4 w-1/2 rounded-lg"></div>
         </td>
         <td className="px-6 py-4 whitespace-no-wrap">
-          <div className="bg-gray-200 h-4 w-full mb-2"></div>
-          <div className="bg-gray-200 h-4 w-1/2"></div>
+          <div className="bg-gray-200 h-4 w-full rounded-lg mb-2"></div>
+          <div className="bg-gray-200 h-4 w-1/2 rounded-lg"></div>
         </td>
         <td className="px-6 py-4 whitespace-no-wrap w-40">
-          <div className="bg-gray-200 h-4 w-full mb-2"></div>
-          <div className="bg-gray-200 h-4 w-1/2"></div>
+          <div className="bg-gray-200 h-4 w-full rounded-lg mb-2"></div>
+          <div className="bg-gray-200 h-4 w-1/2 rounded-lg"></div>
         </td>
         <td className="px-6 py-4 whitespace-no-wrap text-right">
-          <div className="bg-gray-200 h-[45px] w-[45px] rounded"></div>
+          <div className="bg-gray-200 h-[45px] w-[45px] rounded-lg"></div>
         </td>
       </tr>
     </>

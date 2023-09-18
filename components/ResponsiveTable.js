@@ -59,7 +59,7 @@ const ResponsiveTable = () => {
           ) : (
             tableData?.map((item) => (
               <tr key={item?._id} className="hover:bg-gray-100/50">
-                <td className="px-6 py-4 whitespace-no-wrap w-40">
+                <td className="px-6 py-4 whitespace-no-wrap">
                   <Image
                     src={item.metaThumbnail}
                     alt="Thumbnail"
@@ -76,7 +76,7 @@ const ResponsiveTable = () => {
                     {item.metaDescription}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap w-40">
+                <td className="px-6 py-4 whitespace-no-wrap">
                   <div className="line-clamp-1 text-xs">{item.metaUrl}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap text-right">
