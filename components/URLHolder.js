@@ -17,6 +17,7 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
 import ReloadIcon from "./ReloadIcon";
+import SkeletonLoader from "./SkeletonLoader";
 
 const URLHolder = () => {
   const [url, setUrl] = useState("");
@@ -60,7 +61,7 @@ const URLHolder = () => {
       />
 
       {url.length > 0 && Object?.keys(metadata)?.length > 0 ? (
-        <div className="flex md:flex-row flex-col gap-x-4 border rounded-lg p-2">
+        <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2">
           <Image
             height={52.5}
             width={100}
@@ -72,6 +73,7 @@ const URLHolder = () => {
             <h2 className="text-base font-medium line-clamp-1 text-slate-900">
               {metadata.title}
             </h2>
+            <hr />
             <p className="text-sm line-clamp-2 text-slate-500">
               {metadata.description}
             </p>
@@ -80,9 +82,7 @@ const URLHolder = () => {
       ) : !loading ? (
         <p className="text-center">⚠️ No URL Inserted!</p>
       ) : (
-        <p className="mx-auto">
-          <ReloadIcon />
-        </p>
+        <SkeletonLoader />
       )}
     </section>
   );
