@@ -79,7 +79,9 @@ const URLHolder = () => {
           </article>
         </div>
       ) : !loading ? (
-        <p className="text-center text-sm text-yellow-700">⚠️ No URL Inserted!</p>
+        <p className="text-center text-sm text-yellow-700">
+          ⚠️ No URL Inserted!
+        </p>
       ) : (
         <FetchURLSkeletonLoader />
       )}
