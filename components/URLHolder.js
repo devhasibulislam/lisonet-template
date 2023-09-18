@@ -35,7 +35,7 @@ const URLHolder = () => {
   };
 
   const handleEnterKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && url.length !== 0 && !loading) {
       fetchMetadata();
       setLoading(true);
     }
@@ -55,7 +55,7 @@ const URLHolder = () => {
           setMetadata({});
         }}
         onKeyUp={handleEnterKeyPress}
-        className="border border-black focus:border-black/50 w-full px-2.5 py-2 rounded-3xl text-center outline-none"
+        className="border border-black focus:border-black/50 w-full px-2.5 py-2 rounded-3xl text-center outline-none text-sm"
         required
       />
 
@@ -66,7 +66,7 @@ const URLHolder = () => {
             width={100}
             src={metadata.imageUrl}
             alt="site thumbnail"
-            className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] w-full max-w-full border border-transparent object-contain"
+            className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] w-full max-w-full border border-transparent object-cover"
           />
           <article className="flex flex-col gap-y-1.5">
             <h2 className="text-base font-medium line-clamp-1 text-slate-900">
@@ -79,7 +79,7 @@ const URLHolder = () => {
           </article>
         </div>
       ) : !loading ? (
-        <p className="text-center">⚠️ No URL Inserted!</p>
+        <p className="text-center text-sm text-yellow-700">⚠️ No URL Inserted!</p>
       ) : (
         <FetchURLSkeletonLoader />
       )}
