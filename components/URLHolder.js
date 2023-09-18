@@ -48,7 +48,7 @@ const URLHolder = () => {
         type="url"
         name="url"
         id="url"
-        placeholder="🔗 https://devhasibulislam.verce.app"
+        placeholder="🔗 https://devhasibulislam.verce.app/"
         pattern="https://.*"
         spellCheck="true"
         onChange={(e) => {
