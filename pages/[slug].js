@@ -31,7 +31,7 @@ const MetaSlug = () => {
       })
       .then((data) => {
         // Assuming data.data.metaURL contains the URL you want to redirect to
-        const metaURL = data.data.metaURL;
+        const metaURL = data.data.metaUrl;
 
         // Use the useRouter to programmatically navigate to the metaURL
         router.push(metaURL);
