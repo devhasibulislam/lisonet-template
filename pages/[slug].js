@@ -46,6 +46,38 @@ const MetaSlug = () => {
     <section className="w-screen h-screen overflow-hidden flex justify-center items-center">
       <Head>
         <title>Waiting for redirect...</title>
+        <meta
+          name="description"
+          content="Checkout our free tool that short your url with encryption"
+          key="desc"
+        />
+
+        {/* Open Graph Credentials */}
+        <meta
+          property="og:url"
+          content="https://lisonet-template.vercel.app/"
+        />
+        <meta property="og:title" content="Try URL Shortener for Free" />
+        <meta
+          property="og:description"
+          content="Checkout our free tool that short your url with encryption"
+        />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dho0rpn5a/image/upload/v1695044502/samples/url-shortener_h4oa18.png"
+        />
+
+        {/* Twitter Card Credentials */}
+        <meta
+          property="twitter:image"
+          content="https://res.cloudinary.com/dho0rpn5a/image/upload/v1695044502/samples/url-shortener_h4oa18.png"
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Try URL Shortener for Free" />
+        <meta
+          property="twitter:description"
+          content="Checkout our free tool that short your url with encryption"
+        />
       </Head>
 
       <Image
