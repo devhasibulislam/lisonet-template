@@ -30,7 +30,11 @@ const MetaSlug = () => {
         return response.json();
       })
       .then((data) => {
-        // Handle the data
+        // Assuming data.data.metaURL contains the URL you want to redirect to
+        const metaURL = data.data.metaURL;
+
+        // Use the useRouter to programmatically navigate to the metaURL
+        router.push(metaURL);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
