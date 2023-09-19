@@ -29,14 +29,12 @@ let client;
 
 export async function connectToDatabase() {
   try {
-    if (!client || !client.isConnected()) {
-      client = new MongoClient(uri, options);
-      await client.connect();
-      console.log("Connected to the database");
-    }
+    client = new MongoClient(uri, options);
+    await client.connect();
+    console.log("Connected to the database");
     return client.db();
   } catch (error) {
-    console.error("Error connecting to the database:", error.message);
+    console.error("Error connecting:", error.message);
     throw error;
   }
 }
