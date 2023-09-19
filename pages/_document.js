@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta property="title" content="Try URL Shortener for Free" />
         <meta
           name="description"
           content="Checkout our free tool that short your url with encryption"
