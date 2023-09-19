@@ -39,7 +39,7 @@ const MetaSlug = () => {
       .catch((error) => {
         console.error("Fetch error:", error);
       });
-  }, [slug]);
+  }, [slug, router]);
 
   return (
     <section className="w-screen h-screen overflow-hidden flex justify-center items-center">
