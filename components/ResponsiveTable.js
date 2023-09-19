@@ -13,7 +13,6 @@
  * Date: 18, September 2023
  */
 
-import data from "@/data/data";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import ClipBoardIcon from "./ClipBoardIcon";
@@ -28,8 +27,8 @@ const ResponsiveTable = () => {
 
     fetch("/api/getAllData")
       .then((request) => request.json())
-      .then((data) => {
-        setTableData(data?.data);
+      .then((response) => {
+        setTableData(response?.data);
         setIsLoading(false);
       })
       .catch((error) => {
