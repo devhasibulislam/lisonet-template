@@ -11,6 +11,12 @@ export default function Document() {
           key="desc"
         />
 
+        <meta
+          name="google-site-verification"
+          content="sZPmFgCCG9yDDjVqCsdembcfkOLDihLkjCWdXkxnEVI"
+        />
+        <meta name="msvalidate.01" content="100EE9C6C0FC17AF45101A46F9363D0C" />
+
         {/* Open Graph Credentials */}
         <meta
           property="og:url"
