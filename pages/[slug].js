@@ -13,6 +13,7 @@
  * Date: 19, September 2023
  */
 
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -43,6 +44,10 @@ const MetaSlug = () => {
 
   return (
     <section className="w-screen h-screen overflow-hidden flex justify-center items-center">
+      <Head>
+        <title>Waiting for redirect...</title>
+      </Head>
+
       <Image
         src="/spinner.png"
         alt="Loading..."
