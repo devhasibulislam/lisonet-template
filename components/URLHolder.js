@@ -27,6 +27,8 @@ const URLHolder = () => {
   const [loading, setLoading] = useState(false);
   const [copy, setCopy] = useState(true);
 
+  const metaSlug = randomBytes(3).toString("hex");
+
   const fetchMetadata = async () => {
     url.length > 0 && setLoading(true);
     try {
@@ -53,7 +55,7 @@ const URLHolder = () => {
       metaTitle: metadata.title,
       metaDescription: metadata.description,
       metaUrl: url,
-      metaSlug: randomBytes(3).toString("hex"),
+      metaSlug,
     };
 
     fetch("/api/insertData", {
@@ -94,22 +96,27 @@ const URLHolder = () => {
           <Image
             height={52.5}
             width={100}
-            src={metadata.imageUrl}
+            src={metadata?.imageUrl}
             alt="site thumbnail"
             className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] w-full max-w-full border border-transparent object-cover"
           />
           <article className="flex flex-col gap-y-1.5">
             <h2 className="text-base font-medium line-clamp-1 text-slate-900">
-              {metadata.title}
+              {metadata?.title}
             </h2>
             <hr />
             <p className="text-sm line-clamp-2 text-slate-500">
-              {metadata.description}
+              {metadata?.description}
             </p>
           </article>
 
           <button
-            onClick={handleShortUrl}
+            onClick={() => {
+              window.navigator.clipboard.writeText(
+                `https://lisonet-template.vercel.app/${metaSlug}`
+              );
+              handleShortUrl();
+            }}
             className="absolute top-2 right-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1.5 px-1.5 rounded-full shadow disabled:bg-gray-300"
             disabled={!copy && loading}
           >
