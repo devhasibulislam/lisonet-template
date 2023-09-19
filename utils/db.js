@@ -25,11 +25,10 @@ if (!process.env.DB_URI) {
   throw new Error("Please add your Mongo URI to .env.local");
 }
 
-let client;
+const client = new MongoClient(uri, options);
 
 export async function connectToDatabase() {
   try {
-    client = new MongoClient(uri, options);
     await client.connect();
     console.log("Connected to the database");
     return client.db();
