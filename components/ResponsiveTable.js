@@ -41,7 +41,7 @@ const ResponsiveTable = () => {
   }, []);
 
   return (
-    <section className="overflow-auto max-h-[calc(90vh-105px)]">
+    <section className="overflow-auto max-h-[calc(80vh-105px)]">
       <button
         onClick={() => {
           setIsLoading(true);
