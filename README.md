@@ -4,8 +4,6 @@
 
 ![lisonet](https://github.com/devhasibulislam/lisonet-template/blob/master/public/url-shortener.png?raw=true)
 
-#
-
 ![lisonet-overview](https://github.com/devhasibulislam/lisonet-template/blob/master/public/url-shortener-overview.png?raw=true)
 
 ## `API` Endpoints
