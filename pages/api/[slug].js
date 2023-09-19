@@ -42,7 +42,7 @@ export default async function handler(req, res) {
       }
 
       // Return the data if found
-      res.status(200).json({ message: "Data fetched successfully", data });
+      res.redirect(data.metaUrl);
     } catch (error) {
       // Handle any potential errors
       console.error(error);
