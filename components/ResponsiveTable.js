@@ -15,8 +15,8 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import ClipBoardIcon from "./ClipBoardIcon";
 import DisplayTableSkeletonLoader from "./DisplayTableSkeletonLoader";
+import CopyButton from "./CopyButton";
 
 const ResponsiveTable = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,9 +85,7 @@ const ResponsiveTable = () => {
                   <div className="line-clamp-1 text-xs">{item.metaUrl}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap text-right">
-                  <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1.5 px-1.5 rounded">
-                    <ClipBoardIcon />
-                  </button>
+                  <CopyButton metaSlug={item.metaSlug} />
                 </td>
               </tr>
             ))
