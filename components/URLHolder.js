@@ -26,6 +26,7 @@ const URLHolder = () => {
   const [metadata, setMetadata] = useState({});
   const [loading, setLoading] = useState(false);
   const [copy, setCopy] = useState(true);
+  const [error, setError] = useState("");
 
   const metaSlug = randomBytes(3).toString("hex");
 
@@ -35,8 +36,11 @@ const URLHolder = () => {
       const response = await axios.get(`/api/metadata?url=${url}`);
       setMetadata(response.data);
       setLoading(false);
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+      setMetadata({});
+      setUrl("");
     }
   };
 
@@ -87,48 +91,60 @@ const URLHolder = () => {
           setMetadata({});
         }}
         onKeyUp={handleEnterKeyPress}
-        className="border border-black focus:border-black/50 w-full px-2.5 py-2 rounded-3xl text-center outline-none text-sm"
+        className="border border-black focus:border-black/50 w-full px-2.5 py-2 rounded-md text-center outline-none text-sm"
         required
       />
 
-      {url.length > 0 && Object?.keys(metadata)?.length > 0 ? (
-        <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2 relative">
-          <Image
-            height={52.5}
-            width={100}
-            src={metadata?.imageUrl}
-            alt="site thumbnail"
-            className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] w-full max-w-full border border-transparent object-cover"
-          />
-          <article className="flex flex-col gap-y-1.5">
-            <h2 className="text-base font-medium line-clamp-1 text-slate-900">
-              {metadata?.title}
-            </h2>
-            <hr />
-            <p className="text-sm line-clamp-2 text-slate-500">
-              {metadata?.description}
-            </p>
-          </article>
+      {error.length === 0 ? (
+        <>
+          {url.length > 0 && Object?.keys(metadata)?.length > 0 ? (
+            <div className="flex md:flex-row flex-col gap-4 border rounded-lg p-2 relative">
+              <Image
+                height={52.5}
+                width={100}
+                src={metadata?.imageUrl}
+                alt="site thumbnail"
+                className="rounded-lg md:max-w-[100px] md:max-h-[52.5px] w-full max-w-full border border-transparent object-cover"
+              />
+              <article className="flex flex-col gap-y-1.5">
+                <h2 className="text-base font-medium line-clamp-1 text-slate-900">
+                  {metadata?.title}
+                </h2>
+                <hr />
+                <p className="text-sm line-clamp-2 text-slate-500">
+                  {metadata?.description}
+                </p>
+              </article>
 
-          <button
-            onClick={() => {
-              window.navigator.clipboard.writeText(
-                `https://lisonet-template.vercel.app/${metaSlug}`
-              );
-              handleShortUrl();
-            }}
-            className="absolute top-2 right-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1.5 px-1.5 rounded-full shadow disabled:bg-gray-300"
-            disabled={!copy && loading}
-          >
-            {copy ? <ClipBoardIcon /> : <ReloadIcon />}
-          </button>
-        </div>
-      ) : !loading ? (
-        <p className="text-center text-sm text-cyan-700 w-fit px-4 py-0.5 border border-cyan-700 bg-cyan-100 rounded-3xl mx-auto cursor-not-allowed">
-          ℹ️ No URL Inserted Yet
-        </p>
+              <button
+                onClick={() => {
+                  window.navigator.clipboard.writeText(
+                    `https://lisonet-template.vercel.app/${metaSlug}`
+                  );
+                  handleShortUrl();
+                }}
+                className="absolute top-2 right-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-1.5 px-1.5 rounded-full shadow disabled:bg-gray-300"
+                disabled={!copy && loading}
+              >
+                {copy ? <ClipBoardIcon /> : <ReloadIcon />}
+              </button>
+            </div>
+          ) : !loading ? (
+            <p className="text-center text-sm text-cyan-700 w-fit px-4 py-0.5 border border-slate-200 rounded-lg mx-auto cursor-not-allowed">
+              No URL Inserted Yet
+              <br />
+              <span className="capitalize text-xs text-red-700">
+                some websites have restrictions
+              </span>
+            </p>
+          ) : (
+            <FetchURLSkeletonLoader />
+          )}
+        </>
       ) : (
-        <FetchURLSkeletonLoader />
+        <p className="py-1 text-sm border border-red-900 text-red-900 bg-red-50 text-center rounded">
+          {error}
+        </p>
       )}
     </section>
   );
