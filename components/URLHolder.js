@@ -124,8 +124,8 @@ const URLHolder = () => {
           </button>
         </div>
       ) : !loading ? (
-        <p className="text-center text-sm text-yellow-700">
-          ⚠️ No URL Inserted!
+        <p className="text-center text-sm text-cyan-700 w-fit px-4 py-0.5 border border-cyan-700 bg-cyan-100 rounded-3xl mx-auto cursor-not-allowed">
+          ℹ️ No URL Inserted Yet
         </p>
       ) : (
         <FetchURLSkeletonLoader />
