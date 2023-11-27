@@ -59,21 +59,25 @@ export default async function handler(req, res) {
         res.status(500).json({
           title: "Internal Server Error",
           description: "Failed to Fetch URL",
-          imageUrl: "/image-not-available.png",
         });
       }
     } else {
       res.status(500).json({
         title: "Internal Server Error",
         description: "URL Response Failed",
-        imageUrl: "/image-not-available.png",
       });
     }
   } catch (error) {
-    res.status(500).json({
-      title: "Internal Server Error",
-      description: error.message,
-      imageUrl: "/image-not-available.png",
-    });
+    if (error.response && error.response.status === 403) {
+      res.status(403).json({
+        title: "Forbidden",
+        description: "Access to the resource is forbidden.",
+      });
+    } else {
+      res.status(500).json({
+        title: "Internal Server Error",
+        description: error.message,
+      });
+    }
   }
 }
