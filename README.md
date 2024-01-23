@@ -1,3 +1,5 @@
+Full Video on YouTube [CodeCraftMERN](https://youtu.be/5Hh2RwhlreY?si=DOQ67BNcS4BvaIbB)
+
 # Link Shortener Network `lisonet`
 
 > Short link with `middle tier` encryption. It is a technique on the World Wide Web in which a Uniform Resource Locator (URL) may be made substantially shorter and still direct to the required page.
